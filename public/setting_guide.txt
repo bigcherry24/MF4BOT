@@ -1,0 +1,9 @@
+#Node.js 프로젝트 초기화:
+npm init -y
+
+#필요한 라이브러리 설치:
+npm install express socket.io
+
+
+#gif 이미지 사이트
+https://tenor.com/ko/search/bow-gifs

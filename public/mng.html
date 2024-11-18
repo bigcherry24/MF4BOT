@@ -48,6 +48,8 @@
         <div><a href="#" id="bye_future4">AI가 모든 산업에 엄청난 영향을 미칠 겁니다.</a></div>
     </div>
     <div class="column_img">
+        <div><button id="change_bgimg">배경 이미지 변경하기</button></div>
+        <div>-</div>
         <div><a href="#" id="line-friends-brown-bear">line-friends-brown-bear 이미지변경</a></div>
         <div>-</div>
         <div><a href="#" id="morphed_company_future_extended">morphed_company_future_extended 이미지변경</a></div>
@@ -65,10 +67,9 @@ const form = document.querySelector('#form');
 const input = document.querySelector('#input');
 const messages = document.querySelector('#messages');
 const clearLink = document.getElementById('clear-messages');
+const chgbgImg = document.getElementById('change_bgimg');
 
-// const imgLinks = document.querySelectorAll('#cat-meme-cats-love, #thematrixreloaded-matrix, #line-friends-brown-bear, #morphed_company_future_extended');
 const imgLinks = document.querySelectorAll('div[class^="column_img"] a');
-// const imgLinks = document.querySelectorAll('div[class^="column_img"] a');
 const chatLinks = document.querySelectorAll('div[class^="column_msg"] a');
 
 form.addEventListener('submit', (e) => {
@@ -91,6 +92,11 @@ clearLink.addEventListener('click', (e) => {
     e.preventDefault();
     messages.innerHTML = '';
     socket.emit('chat style', "msg:deleteAll");
+});
+
+chgbgImg.addEventListener('click', (e) => {
+    e.preventDefault();
+    socket.emit('img style', "img:chgbgImg");
 });
 
 imgLinks.forEach((link) => {
