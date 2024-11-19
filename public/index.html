@@ -56,12 +56,21 @@
             const socket = io();
 
             socket.on('chat message', (msg) => {
-                const messages = document.querySelector('.left-pane')
+                const messages = document.querySelector('.left-pane');
                 const messageElement = document.createElement('div');
                 messageElement.classList.add('message');
-                messageElement.textContent = msg;
                 messages.appendChild(messageElement);
-                messages.scrollTop = messages.scrollHeight;
+
+                let index = 0;
+                const interval = setInterval(() => {
+                    if (index < msg.length) {
+                        messageElement.textContent += msg[index];
+                        index++;
+                    } else {
+                        clearInterval(interval);
+                        messages.scrollTop = messages.scrollHeight;
+                    }
+                }, 100); // 100ms 간격으로 타이핑 효과
             });
 
             socket.on('chat style', (msg) => {
